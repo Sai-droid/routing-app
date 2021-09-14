@@ -30,7 +30,7 @@
 }
 
 .active-link-style{
-  color: yellow;
+  color: whitesmoke;
  text-decoration: none;
 }
 
@@ -51,5 +51,5 @@ border: 1px solid gray;
   width:100px;
   padding:5px;
   border: 2px solid red;
-  
+
 }

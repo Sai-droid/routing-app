@@ -2,11 +2,12 @@ import React,{useState} from "react";
 import { BrowserRouter, Route, NavLink ,Prompt,Redirect} from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
 import "./App.css";
-
+import messageContext from './contexts/messageContext'
+import HomePage from "./pages/HomePage";
 function App() {
   const[loggin,setLoggin] = useState(false)
   const[age,setAge] = useState(null)
-
+  const[message,setMessage] = useState("I am being shared")
   const logInHandle =()=>{
     setLoggin(!loggin)
   }
@@ -16,6 +17,7 @@ function App() {
   }
   return (
     <BrowserRouter>
+    <messageContext.Provider value = {[message,setMessage]} >
       <div className="App">
         <header className="App-header">
           <ul className ="ul-style ">
@@ -38,9 +40,7 @@ function App() {
           <Route
             exact
             path="/"
-            render={() => {
-              return <h1>Welcome Home</h1>;
-            }}
+           component={HomePage}
           />
           <Route exact path="/about" component={AboutPage} />
           <Route
@@ -60,6 +60,7 @@ function App() {
           />
         </header>
       </div>
+      </messageContext.Provider>
     </BrowserRouter>
   );
 }
